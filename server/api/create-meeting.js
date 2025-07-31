@@ -55,8 +55,10 @@ export default defineEventHandler(async (event) => {
 
 	// Parse hours and minutes from the time string
 	const [hour, minute] = time.split(':').map(Number);
-	const start = new Date(`${date}T${time}:00${tz}`);
+	const start = new Date(date);
 	const end = new Date(start.getTime() + duration * 60000);
+  console.log('Start Date:', start);
+  console.log('End Date:', end);
 
 	// Format end time as 'YYYY-MM-DDTHH:mm:ss+02:00'
 	const pad = n => n.toString().padStart(2, '0');
@@ -79,6 +81,7 @@ export default defineEventHandler(async (event) => {
   console.log('Calculated endDateTime:', endDateTime);
   console.log('Start Date object:', new Date(startDateTime));
   console.log('End Date object:', new Date(endDateTime));
+  return;
   const calendarResponse = await axios.post(
     `https://www.googleapis.com/calendar/v3/calendars/${process.env.CALENDAR_ID}/events`,
     calendarEvent,
