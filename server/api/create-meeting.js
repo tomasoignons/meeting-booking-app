@@ -55,7 +55,7 @@ export default defineEventHandler(async (event) => {
 
 	// Parse hours and minutes from the time string
 	const [hour, minute] = time.split(':').map(Number);
-	const start = new Date(date);
+	const start = new Date(`${date}T${time}:00${tz}`);
 	const end = new Date(start.getTime() + duration * 60000);
   console.log('Start Date:', start);
   console.log('End Date:', end);
