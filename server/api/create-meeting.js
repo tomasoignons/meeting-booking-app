@@ -62,7 +62,7 @@ export default defineEventHandler(async (event) => {
 
 	// Format end time as 'YYYY-MM-DDTHH:mm:ss+02:00'
 	const pad = n => n.toString().padStart(2, '0');
-	const endDateTime = `${end.getFullYear()}-${pad(end.getMonth() + 1)}-${pad(end.getDate())}T${pad(end.getHours())}:${pad(end.getMinutes())}:${pad(end.getSeconds())}${'+02:00'}`;
+	const endDateTime = `${end.getFullYear()}-${pad(end.getMonth() + 1)}-${pad(end.getDate())}T${pad(end.getHours())}:${pad(end.getMinutes())}:${pad(end.getSeconds())}${'+00:00'}`;
 
   const calendarEvent = {
     summary: `Meeting with ${userName}`,
@@ -81,7 +81,6 @@ export default defineEventHandler(async (event) => {
   console.log('Calculated endDateTime:', endDateTime);
   console.log('Start Date object:', new Date(startDateTime));
   console.log('End Date object:', new Date(endDateTime));
-  return;
   const calendarResponse = await axios.post(
     `https://www.googleapis.com/calendar/v3/calendars/${process.env.CALENDAR_ID}/events`,
     calendarEvent,
