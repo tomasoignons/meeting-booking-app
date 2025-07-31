@@ -3,6 +3,9 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
+ENV TZ=Europe/Zurich
+RUN apk add --no-cache tzdata
+
 # Install dependencies
 COPY package*.json ./
 RUN npm install

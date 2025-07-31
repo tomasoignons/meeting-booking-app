@@ -74,12 +74,16 @@ export default defineEventHandler(async (event) => {
   try {
     const accessToken = await getAccessToken();
 	console.log('Creating calendar event:', calendarEvent);
-	console.log('url:', `https://www.googleapis.com/calendar/v3/calendars/${process.env.CALENDAR_ID}/events`);
-    const calendarResponse = await axios.post(
-      `https://www.googleapis.com/calendar/v3/calendars/${process.env.CALENDAR_ID}/events`,
-      calendarEvent,
-      { headers: { Authorization: `Bearer ${accessToken}` } }
-    );
+  console.log('Input - date:', date, 'time:', time, 'duration:', duration);
+  console.log('Calculated startDateTime:', startDateTime);
+  console.log('Calculated endDateTime:', endDateTime);
+  console.log('Start Date object:', new Date(startDateTime));
+  console.log('End Date object:', new Date(endDateTime));
+  const calendarResponse = await axios.post(
+    `https://www.googleapis.com/calendar/v3/calendars/${process.env.CALENDAR_ID}/events`,
+    calendarEvent,
+    { headers: { Authorization: `Bearer ${accessToken}` } }
+  );
 	googleCalendarEventId = calendarResponse.data.id;
   } catch (err) {
   console.error('Error creating calendar event:', err.response?.data || err.message);
