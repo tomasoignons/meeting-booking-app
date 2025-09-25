@@ -29,6 +29,9 @@ RUN npm install --omit=dev
 COPY --from=builder /app/.output ./.output
 COPY public ./public
 
+# Copy .env file (NOT RECOMMENDED for production) (according to copilot, I don't care)
+COPY .env .env
+
 # Expose port (default Nuxt port)
 EXPOSE 3000
 
