@@ -281,7 +281,7 @@ export default {
   },
   computed: {
     isFormValid() {
-      console.log("le formulaire est valide")
+      console.log("le formulaire est valide 2")
       const basicValidation = this.userEmail && this.userName && this.userEmail.includes('@') && this.selectedDateInput && this.selectedTime;
       
       if (!basicValidation) return false;
