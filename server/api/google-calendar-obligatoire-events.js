@@ -2,6 +2,8 @@ import { defineEventHandler } from 'h3';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 
+console.log(process.env.GOOGLE_PROJECT_ID);
+
 const serviceAccount = {
   type: "service_account",
   project_id: process.env.GOOGLE_PROJECT_ID,
