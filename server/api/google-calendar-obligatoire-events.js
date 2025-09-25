@@ -1,6 +1,9 @@
 import { defineEventHandler } from 'h3';
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 console.log(process.env.GOOGLE_PROJECT_ID);
 
