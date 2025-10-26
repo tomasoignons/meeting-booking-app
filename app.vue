@@ -10,7 +10,7 @@ useHead({
     {
       src: 'https://plausible.omont.ch/js/script.js',
       defer: true,
-      'data-domain': 'clastrix.omont.ch'
+      'data-domain': 'meetings.omont.ch'
     }
   ]
 })
