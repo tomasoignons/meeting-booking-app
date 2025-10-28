@@ -29,6 +29,9 @@ RUN npm install --omit=dev
 COPY --from=builder /app/.output ./.output
 COPY public ./public
 
+RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf && \
+    echo "nameserver 8.8.4.4" >> /etc/resolv.conf
+
 # Copy .env file (NOT RECOMMENDED for production) (according to copilot, I don't care)
 COPY .env .env
 
